@@ -6,7 +6,11 @@ import "react-circular-progressbar/dist/styles.css";
 // import { AnimatedProgressProvider } from "./ProgressBarAnimation/AnimatedProgressBar";
 // import { ChangingProgressProvider } from "./ProgressBarAnimation/ChangingProgressProvider";
 
-export const Skills: React.FC = () => {
+interface SkillsText {
+  skills: string[]
+}
+
+export const Skills: React.FC<SkillsText> = (props: SkillsText) => {
   return (
     <Grid
       container
@@ -15,12 +19,13 @@ export const Skills: React.FC = () => {
       alignItems="center"
       justify="center"
     >
-        <Grid item xs={1} style={{ padding: 10 }}>
-    <CircularProgressbar value={0.45} maxValue={1} text="Python" />
-  </Grid>
-  <Grid item xs={1} style={{ padding: 10 }}>
-  <CircularProgressbar value={0.7} maxValue={1} text="React" />
-</Grid>
+      {props.skills.map((skill) => {
+        return(
+            <Grid item xs={1} style={{ padding: 10 }}>
+                <CircularProgressbar value={0.45} maxValue={1} text={skill} />
+            </Grid>
+        )
+      })}
     </Grid>
   );
 };

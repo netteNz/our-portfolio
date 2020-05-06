@@ -39,20 +39,24 @@ const useStyles = makeStyles((theme) => ({
   //   }
 }));
 
+//Re render occurs upon a change to a state either via the useState hook or setState function(you need a class to access this function).
+
 export const Home: React.FC = () => {
   const props = { height: 50, width: 50 };
   const classes = useStyles(props);
-
+  const url = '' // add in profile url. it is after the /in. This could be extrated via regex
+  const vanity = '' // Add in vanity.
+  const skills: string[] = [] // Add in skills as separated string. 
   return ( 
     <div>
       <h1>This is the homepage.</h1>
-      <LinkedIn/>
+      { url && <LinkedIn url={url} vanity={vanity}/> }
       <Divider />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper>
             <h2> These are my programming skills</h2>
-            <Skills/>
+            {skills.length > 0 && <Skills skills={skills}/>}
           </Paper>
         </Grid>
       </Grid>

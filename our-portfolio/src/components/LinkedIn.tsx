@@ -2,7 +2,16 @@ import React from 'react';
 import { Card, CardContent, Grid } from '@material-ui/core';
 
 // Lo que esta dentro de card content you can grab it from your linked in profile. y lo puedes paste ahi. 
-export const LinkedIn: React.FC = () => {
+
+interface LinkedInData {
+  url: string;
+  vanity: string;
+}
+
+export const LinkedIn: React.FC<LinkedInData> = (props) => {
+    const { url, vanity } = props
+    // const url = props.url
+    // const vanity = props.vanity
     return (
 
         <Grid
@@ -21,10 +30,10 @@ export const LinkedIn: React.FC = () => {
             data-locale="en_US"
              data-type="vertical"
               data-theme="light"
-               data-vanity="chalbert-rivera-1b310b82"
+               data-vanity={vanity}
                >
                    <a className="LI-simple-link" 
-                         href='https://www.linkedin.com/in/chalbert-rivera-1b310b82?trk=profile-badge'>Chalbert Rivera
+                         href={url}>Chalbert Rivera
                    </a>
                 </div>
             </CardContent>
